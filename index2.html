@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<style>
+body { font-family: Arial; background:#f5f6fa; margin:20px;}
+
+.container {display:grid;grid-template-columns:repeat(4,1fr);gap:15px;}
+.card {background:#fff;padding:15px;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+
+.section {margin-top:30px;}
+.grid-2 {display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+.bar-container {position:relative;background:#eee;border-radius:4px;height:18px;margin:8px 0;}
+.bar {height:100%;border-radius:4px;}
+.bar-label {position:absolute;right:5px;color:#fff;font-size:12px;}
+
+.blue{background:#4a69bd;} 
+.red{background:#e55039;} 
+.orange{background:#fa983a;} 
+.purple{background:#8e44ad;} 
+
+/* Heatmap */
+.matrix {display:grid;grid-template-columns:auto repeat(4,1fr);gap:5px;}
+.cell {
+    background:#dcdde1;
+    padding:10px;
+    text-align:center;
+    position:relative;
+}
+
+/* Tooltip */
+.tooltip {
+    display:none;
+    position:absolute;
+    top:35px;
+    left:0;
+    background:#fff;
+    border:1px solid #ccc;
+    padding:10px;
+    width:250px;
+    z-index:10;
+}
+
+.cell:hover .tooltip {display:block;}
+
+/* Auditoria */
+table {width:100%;border-collapse:collapse;}
+th,td {padding:8px;border-bottom:1px solid #ddd;}
+.table-scroll {max-height:300px;overflow-y:auto;}
+th input, th select {width:100%;}
+
+</style>
+</head>
+
+<body>
+
+<h2>📊 Dashboard de Ocorrências</h2>
+
+<!-- TOPO -->
+<div class="container">
+<div class="card"><b>Total</b><h2>128</h2></div>
+<div class="card"><b>% Ajustado</b><h2>92%</h2></div>
+<div class="card"><b>Top Tipo Erro</b><h2>Integração</h2></div>
+<div class="card"><b>Top Origem</b><h2>Tecnologia (54%)</h2></div>
+</div>
+
+<!-- AREA + ORIGEM -->
+<div class="section grid-2">
+
+<div class="card"><b>Área</b>
+
+<div>Roteiro</div>
+<div class="bar-container">
+<div class="bar purple" style="width:80%"></div>
+<div class="bar-label">50</div>
+</div>
+
+<div>Checking</div>
+<div class="bar-container">
+<div class="bar red" style="width:90%"></div>
+<div class="bar-label">60</div>
+</div>
+
+<div>Coord</div>
+<div class="bar-container">
+<div class="bar orange" style="width:60%"></div>
+<div class="bar-label">40</div>
+</div>
+
+<div>Criativo</div>
+<div class="bar-container">
+<div class="bar blue" style="width:30%"></div>
+<div class="bar-label">20</div>
+</div>
+
+</div>
+
+<div class="card"><b>Origem</b>
+
+<div>Tecnologia</div>
+<div class="bar-container">
+<div class="bar red" style="width:90%"></div>
+<div class="bar-label">70</div>
+</div>
+
+<div>Inventário</div>
+<div class="bar-container">
+<div class="bar orange" style="width:70%"></div>
+<div class="bar-label">50</div>
+</div>
+
+<div>Atendimento</div>
+<div class="bar-container">
+<div class="bar blue" style="width:40%"></div>
+<div class="bar-label">30</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- TIPO + IMPACTO -->
+<div class="section grid-2">
+
+<div class="card"><b>Tipo</b>
+
+<div>Integração</div>
+<div class="bar-container">
+<div class="bar red" style="width:90%"></div>
+<div class="bar-label">80</div>
+</div>
+
+<div>Cadastro</div>
+<div class="bar-container">
+<div class="bar blue" style="width:70%"></div>
+<div class="bar-label">60</div>
+</div>
+
+<div>Processo</div>
+<div class="bar-container">
+<div class="bar orange" style="width:60%"></div>
+<div class="bar-label">45</div>
+</div>
+
+</div>
+
+<div class="card"><b>Impacto</b>
+
+<div>Financeiro</div>
+<div class="bar-container">
+<div class="bar red" style="width:80%"></div>
+<div class="bar-label">70</div>
+</div>
+
+<div>Operacional</div>
+<div class="bar-container">
+<div class="bar blue" style="width:60%"></div>
+<div class="bar-label">60</div>
+</div>
+
+<div>Institucional</div>
+<div class="bar-container">
+<div class="bar purple" style="width:40%"></div>
+<div class="bar-label">30</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- HEATMAP -->
+<div class="section card">
+
+<b>🔥 Heatmap Área x Origem</b>
+
+<div class="matrix">
+
+<div></div>
+<div>Tecnologia</div>
+<div>Inventário</div>
+<div>Atendimento</div>
+<div>Programação</div>
+
+<div>Roteiro</div>
+
+<div class="cell">12
+<div class="tooltip">
+<table>
+<tr><td>05/08</td><td>Erro integração</td></tr>
+<tr><td>05/09</td><td>RP não impactou</td></tr>
+</table>
+</div>
+</div>
+
+<div class="cell">15</div>
+<div class="cell">9</div>
+<div class="cell">4</div>
+
+<div>Checking</div>
+<div class="cell">25</div>
+<div class="cell">8</div>
+<div class="cell">4</div>
+<div class="cell">3</div>
+
+<div>Coord</div>
+<div class="cell">8</div>
+<div class="cell">6</div>
+<div class="cell">7</div>
+<div class="cell">5</div>
+
+<div>Criativo</div>
+<div class="cell">5</div>
+<div class="cell">2</div>
+<div class="cell">1</div>
+<div class="cell">1</div>
+
+</div>
+
+</div>
+
+<!-- AUDITORIA -->
+<div class="section card">
+
+<b>🧾 Auditoria</b>
+
+<div class="table-scroll">
+<table id="auditTable">
+
+<tr>
+<th>Data</th>
+<th>Área</th>
+<th>Erro</th>
+<th>Origem</th>
+<th>Tipo</th>
+<th>Impacto</th>
+</tr>
+
+<tr><td>05/08</td><td>Roteiro</td><td>Erro integração</td><td>Tecnologia</td><td>Integração</td><td>Financeiro</td></tr>
+<tr><td>05/09</td><td>Checking</td><td>Cadastro errado</td><td>Inventário</td><td>Cadastro</td><td>Operacional</td></tr>
+<tr><td>05/10</td><td>Coord</td><td>Processo falha</td><td>Atendimento</td><td>Processo</td><td>Institucional</td></tr>
+
+</table>
+</div>
+
+</div>
+
+</body>
+</html>
+``
